@@ -21,12 +21,9 @@ function UsersList() {
     <h1>Users</h1>
     {error && <p>{error}</p>}
     <ul>
-        {users.map(user => {
-
-             <li key={user.id}>{user.name}</li>
-        }
-         
-        )}
+        <li>{users.name}</li>
+        <li>{users.field}</li>
+        <li>{users.bio}</li>
     </ul>
     
     </>

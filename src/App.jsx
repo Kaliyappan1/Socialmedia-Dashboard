@@ -4,11 +4,11 @@ import UserList from './UsersList'
 
 function App() {
 
-  
+
   return (
     <>
-      <UserList/>
-      {/* <Dashboard/> */}
+      {/* <UserList/> */}
+      <Dashboard/>
     </>
   )
 }

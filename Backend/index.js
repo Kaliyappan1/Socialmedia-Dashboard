@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require("body-parser")
 const cors = require('cors');
 require("dotenv").config();
 const UserModel = require('./Models/UsersSchema')
@@ -12,14 +13,16 @@ const UserModel = require('./Models/UsersSchema')
  .then(() => console.log("DB connected"))
  .catch(err =>console.error("DB not connect"));
 
-app.get('/getUsers', (req, res) => {
+ app.get('/getUsers', (req, res) => {
     UserModel.find()
-    .then(users = res.json(users))
-    .catch (err => {
-        console.error("error fetching users:");
-        res.status(500).json({error: "Internal server error"})
-    })
-})
+        .then(users => {
+            res.json(users);
+        })
+        .catch(err => {
+            console.error("Error fetching users:", err);
+            res.status(500).json({ error: "Internal server error" });
+        });
+});
 
 const PORT = process.env.PORT || 3000
  app.listen(PORT, () => {
